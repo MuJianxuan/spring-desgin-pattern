@@ -1,4 +1,4 @@
-package org.designpattern.spring.amain;
+package org.designpattern.spring.filterchain;
 
 import org.designpattern.spring.filterchain.filterchain.IndexFilterChain;
 import org.designpattern.spring.filterchain.filter.AFilter;
