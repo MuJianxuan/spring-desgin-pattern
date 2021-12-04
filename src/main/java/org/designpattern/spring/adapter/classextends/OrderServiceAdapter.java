@@ -4,7 +4,7 @@ import org.designpattern.spring.adapter.OrderService;
 import org.designpattern.spring.adapter.OrderServiceImpl;
 
 /**
- *
+ * Adapter 适配者
  * 适配 逻辑
  * @author Rao
  * @Date 2021-11-02

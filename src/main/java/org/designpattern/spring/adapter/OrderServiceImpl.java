@@ -1,6 +1,7 @@
 package org.designpattern.spring.adapter;
 
 /**
+ * Adapt
  * @author Rao
  * @Date 2021-11-02
  **/

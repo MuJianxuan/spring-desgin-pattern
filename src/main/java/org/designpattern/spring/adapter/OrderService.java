@@ -1,7 +1,7 @@
 package org.designpattern.spring.adapter;
 
 /**
- * extends
+ * 目标接口
  * @author Rao
  * @Date 2021-11-02
  **/
