@@ -42,6 +42,14 @@ public class Singleton {
         return SingletonHolder.singleton;
     }
 
+    /**
+     * 饿汉式
+     * @return
+     */
+    public static Singleton getHungerInstance(){
+        return SINGLETON;
+    }
+
 
     /**
      * 会被反射 破解

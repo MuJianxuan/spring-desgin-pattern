@@ -1,4 +1,6 @@
-package org.designpattern.spring.creationtype.factorymethod;
+package org.designpattern.spring.creationtype.factory.factorymethod;
+
+import org.designpattern.spring.creationtype.factory.StrFactory;
 
 /**
  * @author Rao

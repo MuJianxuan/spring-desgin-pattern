@@ -1,9 +1,10 @@
 package org.designpattern.spring.creationtype;
 
 import org.designpattern.spring.creationtype.builder.Key;
-import org.designpattern.spring.creationtype.factorymethod.ObjectFactory;
-import org.designpattern.spring.creationtype.factorymethod.Str1Factory;
-import org.designpattern.spring.creationtype.factorymethod.StrFactory;
+import org.designpattern.spring.creationtype.factory.StrFactory;
+import org.designpattern.spring.creationtype.factory.factorymethod.Str1Factory;
+import org.designpattern.spring.creationtype.factory.simplefactory.SimpleFactory;
+import org.designpattern.spring.creationtype.prototype.Prototype;
 import org.designpattern.spring.creationtype.singleton.SingleEnum;
 
 /**
@@ -21,29 +22,27 @@ import org.designpattern.spring.creationtype.singleton.SingleEnum;
  **/
 public class CreationTypeMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         // 简单工厂方法
-        String str = ObjectFactory.createString(1);
+        String str = SimpleFactory.createString(1);
         System.out.println( str);
 
+        // 工厂方法
         StrFactory factory = new Str1Factory();
         System.out.println( factory.createStr());
-
-        // 抽象工厂
-
-
 
         // 建造者
         Key create = Key.KeyBuilder.builder().business("1").initState("2").nextState("3").triggerEvent("create").build();
         System.out.println( create);
 
-        // 原型
+        // 原型模式
+        Prototype prototypeOld = new Prototype();
+        Prototype clone = (Prototype) prototypeOld.clone();
+        System.out.println( prototypeOld == clone);
 
         // 单例
-
         System.out.println( SingleEnum.getInstance() == SingleEnum.getInstance());
-
 
     }
 
