@@ -11,6 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
+ * 定义池的时候需要带上 业务标识（Business identity）
  * @author Rao
  * @Date 2021-11-01
  **/

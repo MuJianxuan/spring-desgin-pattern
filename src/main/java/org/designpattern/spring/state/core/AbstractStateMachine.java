@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
+ * 构建状态机是需要标识 业务  >>  状态扭转也要标识 业务状态
  * 基于Spring的设计  若需要支持其他容器 可以再往上 抽象一层
  * 1、抽象状态机
  * 2、管理业务状态的扭转行为 和 相关状态
