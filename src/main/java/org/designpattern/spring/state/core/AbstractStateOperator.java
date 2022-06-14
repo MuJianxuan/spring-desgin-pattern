@@ -3,10 +3,10 @@ package org.designpattern.spring.state.core;
 import org.springframework.util.Assert;
 
 /**
- * 订单
  * @author Rao
  * @Date 2021-10-24
  **/
+@Deprecated
 public abstract class AbstractStateOperator<T,R> implements StateOperate<T,R> {
 
     /**
@@ -57,7 +57,7 @@ public abstract class AbstractStateOperator<T,R> implements StateOperate<T,R> {
     @Override
     public void updateState(T data) {
         // No operation by default
-        Assert.notNull(data,"does not exist");
+        Assert.notNull( data,"does not exist");
     }
 
     /**

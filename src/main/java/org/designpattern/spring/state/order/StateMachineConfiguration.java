@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StateMachineConfiguration {
 
-    @Bean("orderStateMachine")
+//    @Bean("orderStateMachine")
     public AbstractStateMachine<Order,Order> orderStateMachine(){
         return new AbstractStateMachine<Order, Order>() {};
     }

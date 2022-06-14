@@ -23,8 +23,6 @@ public class StateMachine{
      *
      * 无法兼容 ............ ^&^
      *
-     *
-     *
      */
     private static Map<String, AbstractStateOperator<Order, Order>> statusOperatorMap = new HashMap<>();
 

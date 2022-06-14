@@ -10,7 +10,7 @@ public interface StateOperate<T,R> {
 
     StateResult<R> handle(StateContext<T> stateContext);
 
-    // TODO 移除 updateSate 方法， 添加 仅校验和更新的入口，以更具体的接口定义暴露方法。
+    // TODO 移除 updateState 方法， 添加 仅校验和更新的入口，以更具体的接口定义暴露方法。
 
     /**
      * 提供仅更新对象的状态入口
