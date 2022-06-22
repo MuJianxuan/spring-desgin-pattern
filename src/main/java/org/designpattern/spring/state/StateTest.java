@@ -5,6 +5,8 @@ import org.designpattern.spring.state.core.*;
 import org.designpattern.spring.state.order.*;
 import org.designpattern.spring.state.order.StateMachine;
 
+import java.util.function.Consumer;
+
 /**
  * 状态模式有点像策略模式
  *
@@ -18,6 +20,17 @@ public class StateTest {
     private static ChannelState state = new AvailableState();
 
     public static void study() throws Exception{
+
+
+        //  事件 --> 行为
+        Consumer<Order> consumer = new Consumer<Order>() {
+            @Override
+            public void accept(Order order) {
+
+            }
+        };
+
+
         /**
          * 状态设计模式：
          *  1、状态可以是类 ，也可以是某个属性，面向对象开发，属性看作是一个对象也没什么不同；
