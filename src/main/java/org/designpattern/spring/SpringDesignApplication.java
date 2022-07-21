@@ -5,6 +5,7 @@ import org.designpattern.spring.responsibilitychain.core.ResponsibilityChain;
 import org.designpattern.spring.state.order.Order;
 import org.designpattern.spring.state.v2.EventDrivenStateMachine;
 import org.designpattern.spring.state.v2.EventDrivenStateMachineManager;
+import org.designpattern.spring.state.v2demo.OrderStateDrivenEvent;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -37,11 +38,13 @@ public class SpringDesignApplication implements InitializingBean {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringDesignApplication.class, args);
 
-        //OrderService orderService = applicationContext.getBean(OrderService.class);
-        //orderService.createOrder();
-
         EventDrivenStateMachineManager eventDrivenStateMachineManager = applicationContext.getBean(EventDrivenStateMachineManager.class);
         EventDrivenStateMachine<Order> orderEventDrivenStateMachine = eventDrivenStateMachineManager.<Order>create();
+
+        Order order = new Order();
+        order.setId( 10L);
+
+        orderEventDrivenStateMachine.drive(OrderStateDrivenEvent.pay,order);
 
     }
 

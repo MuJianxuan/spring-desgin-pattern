@@ -35,9 +35,16 @@ public class EventDrivenStateMachine<T extends StateMachineId> extends StateCont
     /**
      * 驱动方法
      * @param drivenEvent
-     * @return
+     * @param param
      */
-    public void drive(DrivenEvent drivenEvent){
+    public void drive(DrivenEvent drivenEvent,T param){
+
+        this.setEvent( drivenEvent);
+        this.setCurrentState( drivenEvent.initialState());
+        this.setFinalState( drivenEvent.finalState());
+        this.setSource( param );
+        this.setStateMachineId( param );
+
 
         StateEnum stateEnum = stateAssistant.read(this);
         if( ! drivenEvent.initialState().state().equals( stateEnum.state() )){
@@ -46,6 +53,10 @@ public class EventDrivenStateMachine<T extends StateMachineId> extends StateCont
         }
         // 持久化失败立即处理
         stateAssistant.write(this);
+        AbstractEventBehaviorHandler<T> eventBehaviorHandler = eventBehaviorHandlerPool.get(drivenEvent);
+
+        // 判空
+        eventBehaviorHandler.triggerBehaviorHandle(this);
 
     }
 
