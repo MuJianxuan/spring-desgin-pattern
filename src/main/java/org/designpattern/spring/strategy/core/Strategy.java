@@ -5,19 +5,19 @@ package org.designpattern.spring.strategy.core;
  * @author Rao
  * @Date 2021-11-01
  **/
-public interface Strategy<T,R> {
+public interface Strategy<T extends StrategyKey> {
 
     /**
      * 执行
      * @param param
      * @return
      */
-    R execute(T param);
+    void execute(T param);
 
     /**
-     * 策略Key
+     * 策略 key
      * @return
      */
-    String strategyKey();
+    StrategyKey key();
 
 }

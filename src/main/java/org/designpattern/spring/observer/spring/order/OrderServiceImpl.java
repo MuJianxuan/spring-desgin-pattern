@@ -1,7 +1,9 @@
 package org.designpattern.spring.observer.spring.order;
 
 import org.designpattern.spring.observer.spring.OrderService;
-import org.designpattern.spring.observer.spring.evrnt.CreateOrderEvent;
+import org.designpattern.spring.observer.spring.event.CreateOrderEvent;
+import org.designpattern.spring.observer.spring.event.OrderChangeEvent;
+import org.designpattern.spring.state.order.Order;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ public class OrderServiceImpl implements OrderService {
         System.out.println("orderService create order!");
 
         applicationEventPublisher.publishEvent( new CreateOrderEvent(this));
+
+        applicationEventPublisher.publishEvent(new OrderChangeEvent(new Order().setId(1L)));
 
         // 为什么不直接调用呢？
 //        this.notifyMsg();

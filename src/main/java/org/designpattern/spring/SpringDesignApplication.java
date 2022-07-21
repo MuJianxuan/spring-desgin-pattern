@@ -1,10 +1,10 @@
 package org.designpattern.spring;
 
-import com.alibaba.fastjson.JSON;
 import org.designpattern.spring.observer.spring.OrderService;
 import org.designpattern.spring.responsibilitychain.core.ResponsibilityChain;
-import org.designpattern.spring.state.core.*;
-import org.designpattern.spring.state.order.*;
+import org.designpattern.spring.state.order.Order;
+import org.designpattern.spring.state.v2.EventDrivenStateMachine;
+import org.designpattern.spring.state.v2.EventDrivenStateMachineManager;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -25,8 +25,8 @@ import javax.annotation.Resource;
 @SpringBootApplication
 public class SpringDesignApplication implements InitializingBean {
 
-    @Resource(name = "orderStateMachine")
-    private AbstractStateMachine<Order, Order> stateMachine;
+    //@Resource(name = "orderStateMachine")
+    //private AbstractStateMachine<Order, Order> stateMachine;
 
     @Resource(name = "orderResponsibilityChain")
     private ResponsibilityChain<Param> orderResponsibilityChain;
@@ -37,32 +37,35 @@ public class SpringDesignApplication implements InitializingBean {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringDesignApplication.class, args);
 
-        OrderService orderService = applicationContext.getBean(OrderService.class);
-        orderService.createOrder();
+        //OrderService orderService = applicationContext.getBean(OrderService.class);
+        //orderService.createOrder();
+
+        EventDrivenStateMachineManager eventDrivenStateMachineManager = applicationContext.getBean(EventDrivenStateMachineManager.class);
+        EventDrivenStateMachine<Order> orderEventDrivenStateMachine = eventDrivenStateMachineManager.<Order>create();
 
     }
 
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        String key = StateKeyBuilder.builder()
-                .business(BusinessStateMachineEnum.order.name())
-                .triggerEvent(OrderStateEventEnum.create_event.name())
-                .initState( StateContents.NO_STATUS )
-                .nextState(OrderStateEnum.wait_pay.name())
-                .build();
+        //String key = StateKeyBuilder.builder()
+        //        .business(BusinessStateMachineEnum.order.name())
+        //        .triggerEvent(OrderStateEventEnum.create_event.name())
+        //        .initState( StateContents.NO_STATUS )
+        //        .nextState(OrderStateEnum.wait_pay.name())
+        //        .build();
+        //
+        //System.out.println(key);
 
-        System.out.println(key);
-
-        StateContext<Order> stateContext = new StateContext<>();
-        stateContext.setKey( key);
-        StateResult<Order> orderResultStateResult = stateMachine.execute(stateContext);
-        System.out.println( "结果：" + JSON.toJSONString( orderResultStateResult));
+        //StateContext<Order> stateContext = new StateContext<>();
+        //stateContext.setKey( key);
+        //StateResult<Order> orderResultStateResult = stateMachine.execute(stateContext);
+        //System.out.println( "结果：" + JSON.toJSONString( orderResultStateResult));
 
 
-        orderResponsibilityChain.execute( new Param());
+        //orderResponsibilityChain.execute( new Param());
 
-        orderService.createOrder();
+        //orderService.createOrder();
 
     }
 }
