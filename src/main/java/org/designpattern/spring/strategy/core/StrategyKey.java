@@ -10,6 +10,6 @@ public interface StrategyKey {
      * 策略Key
      * @return
      */
-    String strategyKey();
+    String key();
 
 }

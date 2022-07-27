@@ -18,6 +18,6 @@ public interface Strategy<T extends StrategyKey> {
      * 策略 key
      * @return
      */
-    StrategyKey key();
+    StrategyKey strategyKey();
 
 }

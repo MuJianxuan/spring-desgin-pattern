@@ -1,18 +1,13 @@
 package org.designpattern.spring;
 
-import org.designpattern.spring.observer.spring.OrderService;
-import org.designpattern.spring.responsibilitychain.core.ResponsibilityChain;
 import org.designpattern.spring.state.order.Order;
 import org.designpattern.spring.state.v2.EventDrivenStateMachine;
 import org.designpattern.spring.state.v2.EventDrivenStateMachineManager;
 import org.designpattern.spring.state.v2demo.OrderStateDrivenEvent;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import javax.annotation.Resource;
 
 /**
  * TODO
@@ -26,14 +21,7 @@ import javax.annotation.Resource;
 @SpringBootApplication
 public class SpringDesignApplication implements InitializingBean {
 
-    //@Resource(name = "orderStateMachine")
-    //private AbstractStateMachine<Order, Order> stateMachine;
 
-    @Resource(name = "orderResponsibilityChain")
-    private ResponsibilityChain<Param> orderResponsibilityChain;
-
-    @Autowired
-    private OrderService orderService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringDesignApplication.class, args);
