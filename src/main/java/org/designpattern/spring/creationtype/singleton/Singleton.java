@@ -17,8 +17,8 @@ public class Singleton {
     /**
      * 静态内部类
      */
-    static class SingletonHolder{
-        private static Singleton singleton = new Singleton();
+    private static class SingletonHolder{
+        private final static Singleton singleton = new Singleton();
     }
 
 
@@ -30,6 +30,9 @@ public class Singleton {
         singleton = new Singleton();
     }
 
+    /**
+     * 静态内部类
+     */
     private Singleton() {
     }
 

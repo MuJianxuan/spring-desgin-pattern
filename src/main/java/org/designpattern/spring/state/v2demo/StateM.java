@@ -1,4 +1,4 @@
-package org.designpattern.spring.state.v2;
+package org.designpattern.spring.state.v2demo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,11 @@ import java.util.function.Consumer;
  * 1、注入到Spring中
  * 2、创建  会读取当前状态  依据事件+当前状态获取
  *
- *      状态扭转机注册器 （State Torsion machine Register）
- *      状态扭转机（State Torsion machine）
+ *      // 具有状态的事件
+ *
+ *      上下文 （初态，终态，事件，行为对象，参数）
+ *      驱动状态注册器 （State Torsion machine Register）
+ *      事件驱动状态机（State Torsion machine）
  *      状态持久人（State Assistant）
  *      状态枚举 （StateEnum）
  *      事件枚举  （EventEnum）

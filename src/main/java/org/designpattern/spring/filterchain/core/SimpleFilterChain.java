@@ -1,9 +1,7 @@
 package org.designpattern.spring.filterchain.core;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.Resource;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +10,16 @@ import java.util.Optional;
  * @author Rao
  * @Date 2021-11-01
  **/
-public abstract class SimpleFilterChain<T> implements FilterChain<T>, InitializingBean {
+public class SimpleFilterChain<T> implements FilterChain<T> {
 
-    @Resource
-    private List<Filter<T>> filterList;
+    /**
+     * 链
+     */
+    private final Iterator<Filter<T>> filterChain;
 
-    private Iterator<Filter<T>> filterChain;
+    public SimpleFilterChain(List<Filter<T>> filterList) {
+        this.filterChain = filterList.iterator();
+    }
 
     @Override
     public void doFilter(T param) {
@@ -25,14 +27,5 @@ public abstract class SimpleFilterChain<T> implements FilterChain<T>, Initializi
         while ( iterator.hasNext()){
             iterator.next().doFilter( param,this);
         }
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-
-        if(! CollectionUtils.isEmpty( filterList)){
-            filterChain = filterList.iterator();
-        }
-
     }
 }

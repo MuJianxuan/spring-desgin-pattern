@@ -1,6 +1,8 @@
 package org.designpattern.spring.state.order;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
+import org.designpattern.spring.state.v2.StateMachineId;
 
 import java.io.Serializable;
 
@@ -9,7 +11,8 @@ import java.io.Serializable;
  * @Date 2021-10-23
  **/
 @Data
-public class Order implements Serializable {
+@Accessors(chain = true)
+public class Order implements Serializable, StateMachineId {
 
     /**
      * 订单Id
@@ -31,4 +34,8 @@ public class Order implements Serializable {
      */
     private Integer orderStatus;
 
+    @Override
+    public Serializable stateMachineId() {
+        return id;
+    }
 }

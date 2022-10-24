@@ -1,6 +1,5 @@
-package org.designpattern.spring.observer.spring.evrnt;
+package org.designpattern.spring.observer.spring.event;
 
-import lombok.Data;
 import org.springframework.context.ApplicationEvent;
 
 /**

@@ -1,6 +1,10 @@
 package org.designpattern.spring.observer.spring;
 
-import org.designpattern.spring.observer.spring.evrnt.CreateOrderEvent;
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
+import org.designpattern.spring.observer.spring.event.CreateOrderEvent;
+import org.designpattern.spring.observer.spring.event.OrderChangeEvent;
+import org.designpattern.spring.state.order.Order;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.EventListener;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Component;
  * @author Rao
  * @Date 2021-11-02
  **/
+@Slf4j
 @Component
 public class SpringCreateOrderEventHandle implements ApplicationListener<CreateOrderEvent> {
 
@@ -33,6 +38,12 @@ public class SpringCreateOrderEventHandle implements ApplicationListener<CreateO
         orderService.notifyMsg();
         System.out.println( "handleCreateOrderEvent1:" + event );
 
+    }
+
+    @EventListener(value = OrderChangeEvent.class)
+    public void handleOrderChangeEvent(OrderChangeEvent orderChangeEvent){
+        Order source = orderChangeEvent.source();
+        log.info("接收到可变的订单消息:{}", JSON.toJSONString( source ));
     }
 
     /**
