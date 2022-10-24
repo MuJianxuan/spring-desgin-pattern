@@ -9,7 +9,11 @@ public abstract class AbstractStateContext<P,R> implements State<P,R> {
 
     private State<P,R> state;
 
-    public void setState(State<P, R> state) {
+    protected AbstractStateContext(State<P, R> state) {
+        this.state = state;
+    }
+
+    public void stateChange(State<P, R> state) {
         this.state = state;
     }
 
