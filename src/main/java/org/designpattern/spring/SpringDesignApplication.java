@@ -25,8 +25,8 @@ import javax.annotation.Resource;
 @SpringBootApplication
 public class SpringDesignApplication implements InitializingBean {
 
-    @Resource(name = "orderStateMachine")
-    private AbstractStateMachine<Order, Order> stateMachine;
+//    @Resource(name = "orderStateMachine")
+//    private AbstractStateMachine<Order, Order> stateMachine;
 
     @Resource(name = "orderResponsibilityChain")
     private ResponsibilityChain<Param> orderResponsibilityChain;
@@ -45,22 +45,22 @@ public class SpringDesignApplication implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        String key = StateKeyBuilder.builder()
-                .business(BusinessStateMachineEnum.order.name())
-                .triggerEvent(OrderStateEventEnum.create_event.name())
-                .initState( StateContents.NO_STATUS )
-                .nextState(OrderStateEnum.wait_pay.name())
-                .build();
-
-        System.out.println(key);
-
-        StateContext<Order> stateContext = new StateContext<>();
-        stateContext.setKey( key);
-        StateResult<Order> orderResultStateResult = stateMachine.execute(stateContext);
-        System.out.println( "结果：" + JSON.toJSONString( orderResultStateResult));
-
-
-        orderResponsibilityChain.execute( new Param());
+//        String key = StateKeyBuilder.builder()
+//                .business(BusinessStateMachineEnum.order.name())
+//                .triggerEvent(OrderStateEventEnum.create_event.name())
+//                .initState( StateContents.NO_STATUS )
+//                .nextState(OrderStateEnum.wait_pay.name())
+//                .build();
+//
+//        System.out.println(key);
+//
+//        StateContext<Order> stateContext = new StateContext<>();
+//        stateContext.setKey( key);
+//        StateResult<Order> orderResultStateResult = stateMachine.execute(stateContext);
+//        System.out.println( "结果：" + JSON.toJSONString( orderResultStateResult));
+//
+//
+//        orderResponsibilityChain.execute( new Param());
 
         orderService.createOrder();
 
