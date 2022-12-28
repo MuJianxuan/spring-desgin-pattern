@@ -24,6 +24,7 @@ public class IndexFilterChain implements FilterChain {
     public void doFilter( ){
         if(! CollectionUtils.isEmpty( filterList) && index != filterList.size()){
             filterList.get( index++).doFilter(this);
+            index = 0;
         }
     }
 
