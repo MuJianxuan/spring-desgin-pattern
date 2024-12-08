@@ -38,6 +38,7 @@ public class ResponsibilityChain<T> implements Chain<T> {
      */
     private void init()  {
 
+        log.info("xxx");
         // 获取
         if (! CollectionUtils.isEmpty( chainNodeList)){
 

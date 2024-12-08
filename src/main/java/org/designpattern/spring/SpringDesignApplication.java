@@ -21,6 +21,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class SpringDesignApplication implements InitializingBean {
 
+//    @Resource(name = "orderStateMachine")
+//    private AbstractStateMachine<Order, Order> stateMachine;
 
 
     public static void main(String[] args) {

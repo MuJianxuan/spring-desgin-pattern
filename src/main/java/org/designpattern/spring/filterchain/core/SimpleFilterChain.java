@@ -1,10 +1,7 @@
 package org.designpattern.spring.filterchain.core;
 
-import org.springframework.util.CollectionUtils;
-
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Rao
@@ -12,20 +9,17 @@ import java.util.Optional;
  **/
 public class SimpleFilterChain<T> implements FilterChain<T> {
 
-    /**
-     * 链
-     */
     private final Iterator<Filter<T>> filterChain;
 
-    public SimpleFilterChain(List<Filter<T>> filterList) {
+    public SimpleFilterChain( List<Filter<T>> filterList) {
+        assert filterList != null;
         this.filterChain = filterList.iterator();
     }
 
     @Override
     public void doFilter(T param) {
-        Iterator<Filter<T>> iterator = Optional.ofNullable(filterChain).orElseThrow(() -> new RuntimeException("The filter chain was not found!"));
-        while ( iterator.hasNext()){
-            iterator.next().doFilter( param,this);
+        if(filterChain != null && filterChain.hasNext()){
+            filterChain.next().doFilter(param,this);
         }
     }
 }

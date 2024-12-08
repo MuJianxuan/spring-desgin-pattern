@@ -12,13 +12,13 @@ public class Singleton {
      */
     private static final Singleton SINGLETON = new Singleton();
 
-    private static Singleton singleton;
+    private static final Singleton singleton;
 
     /**
      * 静态内部类
      */
     private static class SingletonHolder{
-        private final static Singleton singleton = new Singleton();
+        private final static Singleton SINGLETON = new Singleton();
     }
 
 
@@ -34,6 +34,11 @@ public class Singleton {
      * 静态内部类
      */
     private Singleton() {
+
+    }
+
+    public String name(){
+        return "Singleton";
     }
 
     /**
@@ -42,7 +47,7 @@ public class Singleton {
      * @return
      */
     public static Singleton getInstance(){
-        return SingletonHolder.singleton;
+        return SingletonHolder.SINGLETON;
     }
 
     /**

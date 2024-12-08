@@ -22,8 +22,12 @@ public class StateMachineTest {
          * 而状态机模式更着重于 状态迁移会触发的业务操作；
          */
 
+        // 熔断器
         StateManager stateManager = new StateManager( new AvailableState());
         stateManager.setState( new UnavailableState());
+//        stateManager.excute( () -> {
+//
+//        } )
 
     }
 }

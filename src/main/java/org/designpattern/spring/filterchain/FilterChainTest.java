@@ -16,11 +16,13 @@ public class FilterChainTest {
         AFilter aFilter = new AFilter();
         BFilter bFilter = new BFilter();
 
-        IndexFilterChain indexFilterChain = new IndexFilterChain( Arrays.asList(aFilter, bFilter));
-        indexFilterChain.doFilter();
+//        IndexFilterChain indexFilterChain = new IndexFilterChain( Arrays.asList(aFilter, bFilter));
+//        indexFilterChain.doFilter();
+//        indexFilterChain.doFilter();
 
         SimpleFilterChain simpleFilterChain = new SimpleFilterChain(Arrays.asList(aFilter, bFilter).iterator());
         simpleFilterChain.doFilter();
+//        simpleFilterChain.doFilter();
 
 
     }
